@@ -1,4 +1,4 @@
-import createPage from './src/page/create.js';
+import createPage from './src/create.js';
 
 export const handler = async function () {
   const result = await createPage();

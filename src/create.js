@@ -1,5 +1,5 @@
-import { notion, databaseId } from '../client.js';
-import { getEmoji, getTitle, blank } from '../utils.js';
+import { notion, databaseId } from './client.js';
+import { getEmoji, getTitle, blank } from './utils.js';
 
 export default async function createPage() {
   try {
