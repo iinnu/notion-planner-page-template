@@ -5,7 +5,7 @@ import timezone from 'dayjs/plugin/timezone.js';
 dayjs.extend(utc);
 dayjs.extend(timezone);
 
-const emoji = ['💖', '🧡', '💛', '💚', '💙', '💜', '🤎'];
+const emoji = ['❤️', '🧡', '💛', '💚', '💙', '💜', '🤎'];
 const tz = 'Asia/Seoul';
 
 export const getEmoji = () => {
@@ -16,4 +16,13 @@ export const getEmoji = () => {
 export const getTitle = () => {
   const now = dayjs().tz(tz);
   return now.format('YYYY.MM.DD (ddd)');
+};
+
+export const blank = (count) => {
+  return Array(count).fill({
+    object: 'block',
+    paragraph: {
+      rich_text: [{ text: { content: '' } }],
+    },
+  });
 };
