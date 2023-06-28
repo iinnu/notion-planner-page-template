@@ -53,7 +53,7 @@ export default async function createPage() {
             rich_text: [
               {
                 text: {
-                  content: '✏️ TODO',
+                  content: '✏️ NOTE',
                 },
               },
             ],
