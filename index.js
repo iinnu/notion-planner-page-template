@@ -7,5 +7,3 @@ export const handler = async function () {
     body: JSON.stringify(result),
   };
 };
-
-handler();
