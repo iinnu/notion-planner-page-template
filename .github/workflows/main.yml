@@ -6,8 +6,9 @@ on:
       - main
 
 jobs:
-  test:
+  packaging:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "GitHub Actions Test"
-  
+      - name: Checkout repo source code
+        uses: actions/checkout@v3
+        run: cat .github/workflows/main.yml
