@@ -9,7 +9,9 @@ jobs:
   packaging:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repo source code
+      - name: List up fileds
         run: ls -al
+      - name: Checkout repo source code
         uses: actions/checkout@v3
+      - name: Confirm checkout repo
         run: ls -al
