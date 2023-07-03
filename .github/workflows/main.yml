@@ -9,9 +9,14 @@ jobs:
   packaging:
     runs-on: ubuntu-latest
     steps:
-      - name: List up fileds
-        run: ls -al
-      - name: Checkout repo source code
+      - name: Checkout Repository
         uses: actions/checkout@v3
-      - name: Confirm checkout repo
+      
+      - name: Install Dependencies
+        run: npm install
+      
+      - name: Packaging zip
+        run: zip function.zip index.js node_modules/**/* package.json package-lock.json src/**/*
+      
+      - name: Check Zip file
         run: ls -al
