@@ -18,5 +18,32 @@ jobs:
       - name: Packaging zip
         run: zip function.zip index.js node_modules/**/* package.json package-lock.json src/**/*
       
-      - name: Check Zip file
-        run: ls -al
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ap-northeast-2
+      
+      - name: Create AWS Execution role
+        run: |
+          aws iam create-role \
+            --role-name lambda-update-role \
+            --assume-role-policy-document >- 
+              {
+                "Version": "2012-10-17",
+                "Statement": [
+                  { 
+                    "Effect": "Allow", 
+                    "Principal": 
+                      {
+                        "Service": "lambda.amazonaws.com"
+                      }, 
+                    "Action": "sts:AssumeRole"
+                  }
+                ]
+              }
+      
+      - name: Check AWS Configure
+        run: aws lambda list-functions --max-items 10
+
