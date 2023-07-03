@@ -10,5 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo source code
+        run: ls -al
         uses: actions/checkout@v3
+        run: ls -al
         run: cat .github/workflows/main.yml
