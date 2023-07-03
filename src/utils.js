@@ -9,7 +9,7 @@ const emoji = ['❤️', '🧡', '💛', '💚', '💙', '💜', '🤎'];
 const tz = 'Asia/Seoul';
 
 export const getEmoji = () => {
-  const day = new Date().getDay();
+  const day = dayjs().tz(tz).day();
   return emoji[day];
 };
 
