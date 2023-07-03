@@ -78,8 +78,7 @@ export default async function createPage() {
       ],
     });
     console.log(response);
-    console.log('Success! Entry added.');
   } catch (err) {
-    console.err(err);
+    console.log(err);
   }
 }
