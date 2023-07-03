@@ -12,11 +12,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
       
-      - name: Install Dependencies
+      - name: Install dependencies
         run: npm install
       
-      - name: Packaging zip
-        run: zip function.zip index.js node_modules/**/* package.json package-lock.json src/**/*
+      - name: Zipping files
+        run: zip function.zip index.js node_modules/**/* package.json package-lock.json src/*
       
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v2
@@ -25,12 +25,9 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ap-northeast-2
       
-      - name: Create AWS Execution role
-        run: |
-          aws iam create-role \
-            --role-name lambda-role \
-            --assume-role-policy-document '{"Version": "2012-10-17","Statement": [{ "Effect": "Allow", "Principal": {"Service": "lambda.amazonaws.com"}, "Action": "sts:AssumeRole"}]}'
-      
       - name: Deploy Lambda function
-        run: aws lambda update-function-code --function-name createNotionPlannerPage --zip-file fileb://./function.zip
+        run: |
+          aws lambda update-function-code 
+          --function-name createNotionPlannerPage 
+          --zip-file fileb://function.zip
 
